@@ -7,8 +7,6 @@ function AdegaListaItem({
   onRemove,
   onAdd,
 }) {
-  const removerItem = (i) => console.log("remover" + i);
-  const adicionarItem = (i) => console.log("adicionar" + i);
 
   const badgeCounter = (canRender, index) =>
     Boolean(canRender) && (
@@ -24,7 +22,7 @@ function AdegaListaItem({
         remover
       </button>
     );
-/*
+
   return (
     <div className="AdegaListaItem">
       {badgeCounter(quantidadeSelecionada[index], index)}
@@ -45,15 +43,13 @@ function AdegaListaItem({
           {removeButton(quantidadeSelecionada, index)}
         </div>
       </div>
-      <div>
         <img
           className="AdegaListaItem__foto"
           src={garrafa.foto}
           alt={`Garrafa de ${garrafa.sabor}`}
         />
-      </div>
     </div>
   );
-  */
+  
 }
 export default AdegaListaItem;
