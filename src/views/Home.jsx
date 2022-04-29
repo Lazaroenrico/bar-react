@@ -1,7 +1,6 @@
 import "./Home.css";
-import AdegaLista from "./AdegaLista.jsx";
-
-import "./AdegaLista.css"
+import AdegaLista from "../components/AdegaLista/AdegaLista";
+import "../components/AdegaLista/AdegaLista.css"
 
 
 function Home (){
@@ -10,7 +9,8 @@ function Home (){
         <div className="Home__container">
           <AdegaLista/>
         </div>
-      </div>)
+      </div>
+    )
 }
 
 export default Home;

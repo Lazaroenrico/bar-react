@@ -1,4 +1,5 @@
 export const garrafas  = [
+    
     {
         titulo: "FP Dinamica Bical e Arinto Branco",
         tipo:"Vinho Dinamarquês",
@@ -10,7 +11,7 @@ export const garrafas  = [
         titulo: "Johnnie Walker Double Black",
         tipo:"Whisky Escocês",
         descricao:"Essa bebida sofre forte influência da Costa Oeste e da Ilha, e é melhor apreciada com água para desvendar suas complexas camadas de sabor defumado e rico em especiarias.",
-        foto:require("assets/images/Wisk Johnnie Walker.png"),
+        foto:require("assets/images/Johnnie Walker Double.png"),
         preco:"189,90",
     },
     {
