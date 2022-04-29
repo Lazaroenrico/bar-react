@@ -1,12 +1,14 @@
 import "./Home.css";
-import BarLista from "./BarLista";
+import AdegaLista from "./AdegaLista.jsx";
+
+import "./AdegaLista.css"
 
 
 function Home (){
     return (
         <div className="Home">
         <div className="Home__container">
-          <BarLista/>
+          <AdegaLista/>
         </div>
       </div>)
 }
