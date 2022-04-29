@@ -1,22 +1,31 @@
 import "./AdegaListaItem.css";
 
-function AdegaListaItem({garrafa, quantidadeSelecionada, index}) {
+function AdegaListaItem({
+  garrafa,
+  quantidadeSelecionada,
+  index,
+  onRemove,
+  onAdd,
+}) {
+  const removerItem = (i) => console.log("remover" + i);
+  const adicionarItem = (i) => console.log("adicionar" + i);
 
-    const removerItem = (i) => console.log('remover' + i);
-	const adicionarItem = (i) => console.log('adicionar' + i);
-	
+  const badgeCounter = (canRender, index) =>
+    Boolean(canRender) && (
+      <span className="AdegaListaItem__badge">
+        {" "}
+        {quantidadeSelecionada[index]}{" "}
+      </span>
+    );
 
-    const badgeCounter = (canRender, index) => Boolean(canRender) && (<span className="AdegaListaItem__badge"> {quantidadeSelecionada[index]} </span>);
-
-    const removeButton = (canRender, index) => Boolean(canRender) && (
-        <button className="Acoes__remover" onClick={() => removerItem(index)}>
-          remover
-        </button>
-      );
-
-
+  const removeButton = (canRender, index) =>
+    Boolean(canRender) && (
+      <button className="Acoes__remover" onClick={() => onRemove(index)}>
+        remover
+      </button>
+    );
+/*
   return (
-
     <div className="AdegaListaItem">
       {badgeCounter(quantidadeSelecionada[index], index)}
       <div>
@@ -25,16 +34,16 @@ function AdegaListaItem({garrafa, quantidadeSelecionada, index}) {
         <div className="AdegaListaItem__preco">{garrafa.preco}</div>
         <div className="AdegaListaItem__descricao">{garrafa.descricao} </div>
         <div className="AdegaListaItem__Acoes Acoes">
-            <button
+          <button
             className={`Acoes__adicionar ${
-                !quantidadeSelecionada[index] && "Acoes__adicionar--preencher"
+              !quantidadeSelecionada[index] && "Acoes__adicionar--preencher"
             }`}
-            onClick={() => adicionarItem(index)}
-            >
+            onClick={() => onAdd(index)}
+          >
             adicionar
-            </button>
-            {removeButton(quantidadeSelecionada, index)}
-        </div>    
+          </button>
+          {removeButton(quantidadeSelecionada, index)}
+        </div>
       </div>
       <div>
         <img
@@ -43,9 +52,8 @@ function AdegaListaItem({garrafa, quantidadeSelecionada, index}) {
           alt={`Garrafa de ${garrafa.sabor}`}
         />
       </div>
-
     </div>
-   ) ;
+  );
+  */
 }
-
 export default AdegaListaItem;

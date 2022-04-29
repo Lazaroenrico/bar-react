@@ -28,7 +28,9 @@ function AdegaLista() {
         <AdegaListaItem key={`AdegaListaItem-${index}`}
         garrafa = {garrafa}
         quantidadeSelecionada = {garrafaSelecionada[index]}
-        index = {index}/> 
+        index = {index}
+        onAdd={index => adicionarItem(index)}
+        onRemove={index => removerItem(index)}/> 
       ))}
     </div>
   );
