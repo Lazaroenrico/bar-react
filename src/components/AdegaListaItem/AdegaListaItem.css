@@ -1,79 +1,95 @@
 
+.AdegaListaItem {
+  font-family: "Exo";
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  width: 315px;
+  height: 210px;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 400px) {
   .AdegaListaItem {
-    font-family: "Exo";
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    padding: 10px;
-    width: 315px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    width: 210px;
+    height: 180px;
   }
-  
-  @media (max-width: 400px) {
-    .AdegaListaItem {
-      width: 210px;
-      height: 180px;
-    }
-  }
-  
-  .AdegaListaItem > div {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  
-  .AdegaListaItem__titulo {
-    font-size: 1.5em;
-    font-weight: 700;
-    line-height: 100%;
-  }
-  
-  .AdegaListaItem__descricao {
-    font-size: 0.85em;
-  }
-  
-  .AdegaListaItem__preco {
-    color: darkviolet;
-  }
-  .AdegaListaItem__tipo{
-      width: 10px;
-  }
-  .Acoes {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .Acoes__adicionar,
-  .Acoes__remover {
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-family: 'Open Sans', sans-serif;
-    padding: 5px;
-    max-width: 280px;
-    text-align: center;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 48%;
-  }
-  
-  .Acoes__remover {
-    background-color: red;
-  }
-  
-  .Acoes__adicionar {
-    background-color: transparent;
-  }
-  
-  .Acoes__adicionar--preencher {
-    width: 100%;
-  }
-  
-  .AdegaListaItem__foto {
-    display: flex;
-    height: 140px;
-    width: 80px;
-    margin-right: -400px;
-  }
+}
+
+.AdegaListaItem > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.AdegaListaItem__titulo {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.AdegaListaItem__descricao {
+  font-size: 11px;
+  height: 30px;
+}
+
+.AdegaListaItem__preco {
+  color: rgb(130, 20, 41);
+}
+
+.Acoes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Acoes__adicionar,
+.Acoes__remover {
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-family: "Exo", sans-serif;
+  padding: 5px;
+  max-width: 280px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+}
+
+.Acoes__remover {
+  background-color: red;
+}
+
+.Acoes__adicionar {
+  background-color: #121212;
+}
+
+.Acoes__adicionar--preencher {
+  width: 80%;
+}
+
+.AdegaListaItem__foto {
+  width: 50px;
+  height: 110px;
+  margin-right: -55px;
+}
+
+.AdegaListaItem__badge {
+  background-color: greenyellow;
+  padding: 0.1rem;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  color: black;
+  font-size: .8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: -9px;
+  left: -9px;
+}

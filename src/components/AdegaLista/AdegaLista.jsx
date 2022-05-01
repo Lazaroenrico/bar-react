@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./AdegaLista.css";
-import { garrafas } from "mocks/adega.js";
+import { AdegaService } from "services/AdegaService";
 import AdegaListaItem from "components/AdegaListaItem/AdegaListaItem.jsx";
 
 function AdegaLista() {
-
+  const [garrafas, setGarrafas] = useState([]);
   const [garrafaSelecionada, setGarrafaSelecionada] = useState({});
+
+  const getLista = async () => {
+    const response = await AdegaService.getLista();
+    setGarrafas(response)
+  }
+
 
   const adicionarItem = (garrafaIndex) => {
     const garrafa = {
@@ -13,14 +19,17 @@ function AdegaLista() {
     };
     setGarrafaSelecionada({ ...garrafaSelecionada, ...garrafa });
   };
-
-
   const removerItem = (garrafaIndex) => {
     const garrafa = {
       [garrafaIndex]: Number(garrafaSelecionada[garrafaIndex] || 0) - 1,
     };
     setGarrafaSelecionada({ ...garrafaSelecionada, ...garrafa });
   };
+
+
+  useEffect(() => {
+    getLista();
+    }, []);
 
   return (
     <div className="AdegaLista">

@@ -12,7 +12,7 @@ function AdegaListaItem({
     Boolean(canRender) && (
       <span className="AdegaListaItem__badge">
         {" "}
-        {quantidadeSelecionada[index]}{" "}
+        {quantidadeSelecionada}{" "}
       </span>
     );
 
@@ -25,7 +25,7 @@ function AdegaListaItem({
 
   return (
     <div className="AdegaListaItem">
-      {badgeCounter(quantidadeSelecionada[index], index)}
+      {badgeCounter(quantidadeSelecionada, index)}
       <div>
         <div className="AdegaListaItem__titulo">{garrafa.titulo}</div>
         <div className="AdegaListaItem__tipo">{garrafa.tipo}</div>
@@ -34,7 +34,7 @@ function AdegaListaItem({
         <div className="AdegaListaItem__Acoes Acoes">
           <button
             className={`Acoes__adicionar ${
-              !quantidadeSelecionada[index] && "Acoes__adicionar--preencher"
+              !quantidadeSelecionada && "Acoes__adicionar--preencher"
             }`}
             onClick={() => onAdd(index)}
           >
@@ -46,7 +46,7 @@ function AdegaListaItem({
         <img
           className="AdegaListaItem__foto"
           src={garrafa.foto}
-          alt={`Garrafa de ${garrafa.sabor}`}
+          alt={`Garrafa de ${garrafa.tipo}`}
         />
     </div>
   );
