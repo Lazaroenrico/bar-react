@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./AdegaLista.css";
 import { AdegaService } from "services/AdegaService";
 import AdegaListaItem from "components/AdegaListaItem/AdegaListaItem.jsx";
-import ModalAdega from "../AdegaDetalheModal/AdegaDetalheModal"
+import AdegaDetalhesModal from "../AdegaDetalheModal/AdegaDetalheModal"
 
 function AdegaLista() {
   const [garrafas, setGarrafas] = useState([]);
@@ -39,20 +39,19 @@ function AdegaLista() {
     getLista();
     }, []);
  
-    console.log(adegaModal)
   return (
     <div className="AdegaLista">
       {garrafas.map((garrafa, index) => (
         <AdegaListaItem key={`AdegaListaItem-${index}`}
         garrafa = {garrafa}
-        quantidadeSelecionada = {+(garrafaSelecionada[index])}
+        quantidadeSelecionada = {+garrafaSelecionada[index]}
         index = {index}
         onAdd={index => adicionarItem(index)}
         onRemove={index => removerItem(index)}
         clickItem={(adegaId) => getAdegaById(adegaId)}
         /> 
       ))}
-      {adegaModal && <ModalAdega Adega={adegaModal} closeModal={() => setAdegaModal(false)} />}
+      {adegaModal && <AdegaDetalhesModal Adega={adegaModal} closeModal={() => setAdegaModal(false)} />}
     </div>
   );
 }

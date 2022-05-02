@@ -1,10 +1,10 @@
 export const garrafas  = [
     
     {
-        titulo: "FP Dinamica Bical e Arinto Branco",
-        tipo:"Vinho Dinamarquês",
+        titulo: "FP Português Bical ",
+        tipo:"Vinho Português",
         descricao:"Vinho seco, frutado, refinado, com muita mineralidade e uma espécie de sabor com salinidade devido ao clima do Atlântico.",
-        foto:("assets/images/vinho fp dinamarquês.png"),
+        foto:("assets/images/FP Bical Portugues.png"),
         preco:"152,80",
     },
     {
@@ -15,10 +15,10 @@ export const garrafas  = [
         preco:"189,90",
     },
     {
-        titulo: "Gran Coronas Reserva Cabernet Sauvignon",
-        tipo:"Vinho Espanhol",
-        descricao:"Vinho com frutas vermelhas, como cereja e amora com toque de especiarias. ",
-        foto:("assets/images/Gran Coronas.png"),
-        preco:"174,69",
+        titulo: "Jack Daniel's",
+        tipo:"Whisky Jack",
+        descricao:"Whisky feito principalmente de cevada maltada, o segundo tem como matéria prima o milho. ",
+        foto:("assets/images/Jack Daniel's.png"),
+        preco:"149,90",
     },
 ]

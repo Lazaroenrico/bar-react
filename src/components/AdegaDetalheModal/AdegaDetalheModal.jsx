@@ -4,7 +4,7 @@ import Modal from "components/Modal/Modal.jsx";
 function AdegaDetalhesModal({ Adega, closeModal }) {
   return (
     <Modal closeModal={closeModal}>
-      <div className="AdegaetalhesModal">
+      <div className="AdegadetalhesModal">
             <div>
             <div className="AdegaDetalhesModal__titulo"> {Adega.titulo} </div>
             <div className="AdegaDetalhesModal__preco"> R$ {Adega.preco} </div>
