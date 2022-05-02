@@ -7,7 +7,7 @@ import NavBar from 'components/NavBar/NavBar';
 function Home (){
     return (
         <div className="Home">
-          <NavBar />
+          <NavBar/>
         <div className="Home__container">
           <AdegaLista/>
         </div>

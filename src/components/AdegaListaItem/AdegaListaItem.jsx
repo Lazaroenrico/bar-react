@@ -6,9 +6,10 @@ function AdegaListaItem({
   index,
   onRemove,
   onAdd,
+  clickItem,
 }) {
 
-  const badgeCounter = (canRender, index) =>
+  const badgeCounter = (canRender) =>
     Boolean(canRender) && (
       <span className="AdegaListaItem__badge">
         {" "}
@@ -24,7 +25,8 @@ function AdegaListaItem({
     );
 
   return (
-    <div className="AdegaListaItem">
+    <div className="AdegaListaItem" onClick={() => clickItem(garrafa._id)}>
+      {console.log(garrafa._id)}
       {badgeCounter(quantidadeSelecionada, index)}
       <div>
         <div className="AdegaListaItem__titulo">{garrafa.titulo}</div>
@@ -36,7 +38,7 @@ function AdegaListaItem({
             className={`Acoes__adicionar ${
               !quantidadeSelecionada && "Acoes__adicionar--preencher"
             }`}
-            onClick={() => onAdd(index)}
+            onClick={(e) => {e.stopPropagation(); onAdd(index);}}
           >
             adicionar
           </button>
