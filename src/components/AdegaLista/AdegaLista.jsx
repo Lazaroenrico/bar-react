@@ -19,7 +19,8 @@ function AdegaLista() {
     const response = await AdegaService.getById(adegaId);
     setAdegaModal(response);
   };
- 
+  
+ /* ---------------------  Adicionar e Remover ----------------*/
 
   const adicionarItem = (garrafaIndex) => {
     const garrafa = {

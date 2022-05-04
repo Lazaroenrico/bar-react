@@ -90,11 +90,11 @@ function AdicionarGarrafa({ closeModal }) {
             />
           </div>
 
-          <input
+          <button
             className="AdicionaGarrafa_enviar"
-            type="submit"
-            value="Enviar"
-          />
+            type="button"
+            disabled="{canDisable}"
+          >Enviar</button>
         </form>
       </div>
     </Modal>
