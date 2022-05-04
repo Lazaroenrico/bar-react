@@ -1,5 +1,6 @@
 import "./NavBar.css";
 
+
 function NavBar() {
   return (
     <div className="Header">
@@ -14,6 +15,11 @@ function NavBar() {
           <span className="Logo__titulo"> La Adega </span>
         </div>
         <div className="Header__opcoes Opcoes">
+
+        <button type="button" className="Opcoes__garrafa Garrafa" onClick={() => createGarrafa() }>
+         <img src="../assets/images/Adiconar.png" width="40px" className="Garrafa_icone" alt="Adiconar garrafa" />
+         </button>
+
           <div className="Opcoes__sacola Sacola">
             <img
               src="../assets/images/sacola.svg"

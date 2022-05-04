@@ -59,6 +59,19 @@
   right: 0;
 }
 
+.Opcoes {
+  display: flex;
+}
+
+.Garrafa {
+  background: none;
+  border: none;
+}
+
+.Garrafa_icone {
+  cursor: pointer;
+}
+
 @media (max-width: 1220px) {
   .Header {
     max-width: 720px;

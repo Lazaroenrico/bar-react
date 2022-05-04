@@ -1,18 +1,21 @@
 import "./Home.css";
 import AdegaLista from "../components/AdegaLista/AdegaLista";
-import "../components/AdegaLista/AdegaLista.css"
-import NavBar from 'components/NavBar/NavBar';
+import NavBar from "components/NavBar/NavBar";
+import AdicionarGarrafa from "components/AdicionarGarrafa/AdicionarGarrafa";
+import { useState } from "react";
 
+function Home() {
+  const [canShowAdicionaPaletaModal, setCanShowAdicionaGarrafaaModal] = useState(false);
 
-function Home (){
-    return (
-        <div className="Home">
-          <NavBar/>
-        <div className="Home__container">
-          <AdegaLista/>
-        </div>
+  return (
+    <div className="Home">
+      <NavBar createPaleta={() => setCanShowAdicionaGarrafaaModal(true)}/>
+      <div className="Home__container">
+        <AdegaLista />
+        <AdicionarGarrafa />
       </div>
-    )
+    </div>
+  );
 }
 
 export default Home;
