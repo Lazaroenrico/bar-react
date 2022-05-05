@@ -4,7 +4,7 @@ import { AdegaService } from "services/AdegaService";
 import AdegaListaItem from "components/AdegaListaItem/AdegaListaItem.jsx";
 import AdegaDetalhesModal from "../AdegaDetalheModal/AdegaDetalheModal"
 
-function AdegaLista() {
+function AdegaLista({garrafaCriada}) {
   const [garrafas, setGarrafas] = useState([]);
   const [garrafaSelecionada, setGarrafaSelecionada] = useState({});
   const [adegaModal, setAdegaModal] = useState(false);
@@ -34,6 +34,15 @@ function AdegaLista() {
     };
     setGarrafaSelecionada({ ...garrafaSelecionada, ...garrafa });
   };
+
+  const adicionaGarrafaNaLista = (garrafa) => {
+    const lista = [...garrafas, garrafa];
+    setGarrafas(lista);
+};
+
+useEffect(() => {
+    if (garrafaCriada) adicionaGarrafaNaLista(garrafaCriada);
+}, [garrafaCriada]);
 
 
   useEffect(() => {

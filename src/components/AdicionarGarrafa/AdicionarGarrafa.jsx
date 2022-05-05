@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import "components/AdicionarGarrafa/AdicionarGarrafa.css";
+import { AdegaService } from "services/AdegaService.js";
 
-function AdicionarGarrafa({ closeModal }) {
+function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
   const form = {
     preco: "",
     titulo: "",
@@ -10,8 +11,28 @@ function AdicionarGarrafa({ closeModal }) {
     descricao: "",
     foto: "",
   };
+
+  const createGarrafa = async () => {
+
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("\\").pop();
+
+    const { titulo, tipo, descricao, preco, foto } = state;
+
+    const garrafa = {
+      titulo,
+      tipo,
+      descricao,
+      preco,
+      foto: `assets/images/${renomeiaCaminhoFoto(foto)}`,
+    };
+    const response = await AdegaService.create(garrafa);
+
+    onCreateGararafa(response);
+
+  };
+
   const [state, setState] = useState(form);
-  const [canDesable, setCanDesable] = useState(true);
+  const [canDisable, setCanDesable] = useState(true);
 
   const canDisableSendButton = () => {
     const response = !Boolean(
@@ -29,8 +50,8 @@ function AdicionarGarrafa({ closeModal }) {
   };
 
   useEffect(() => {
-      canDisableSendButton();
-  })
+    canDisableSendButton();
+  });
 
   return (
     <Modal closeModal={closeModal}>
@@ -93,8 +114,11 @@ function AdicionarGarrafa({ closeModal }) {
           <button
             className="AdicionaGarrafa_enviar"
             type="button"
-            disabled="{canDisable}"
-          >Enviar</button>
+            disabled={canDisable}
+            onClick={createGarrafa}
+          >
+            Enviar
+          </button>
         </form>
       </div>
     </Modal>

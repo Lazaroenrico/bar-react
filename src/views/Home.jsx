@@ -6,16 +6,20 @@ import { useState } from "react";
 
 function Home() {
   const [canShowAdicionaGarrrafaModal, setCanShowAdicionaGarrafaaModal] = useState(false);
+  const [garrafaParaAdicionar, setGarrafaParaAdicionar] = useState();
+
 
   return (
     <div className="Home">
       <NavBar createGarrafa={() => setCanShowAdicionaGarrafaaModal(true)}/>
       <div className="Home__container">
-        <AdegaLista />
+        <AdegaLista garrafaCriada={garrafaParaAdicionar}/>
         {
           canShowAdicionaGarrrafaModal &&
-          (<AdicionarGarrafa closeModal={() => setCanShowAdicionaGarrafaaModal(false)} />)
+          (<AdicionarGarrafa closeModal={() => setCanShowAdicionaGarrafaaModal(false)} 
+          onCreateGararafa = {(garrafa) => setGarrafaParaAdicionar(garrafa)}/>)
         }
+        
         <AdicionarGarrafa />
       </div>
     </div>

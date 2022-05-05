@@ -26,7 +26,6 @@ function AdegaListaItem({
 
   return (
     <div className="AdegaListaItem" onClick={() => clickItem(garrafa._id)}>
-      {console.log(garrafa._id)}
       {badgeCounter(quantidadeSelecionada, index)}
       <div>
         <div className="AdegaListaItem__titulo">{garrafa.titulo}</div>
