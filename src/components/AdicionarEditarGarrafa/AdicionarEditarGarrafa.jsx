@@ -11,6 +11,7 @@ function AdicionarEditarGarrafa({
   garrafaToUpdate,
   onUpdateGarrafa,
 }) {
+  console.log(mode  )
   const form = {
     preco: garrafaToUpdate?.preco ?? "",
     titulo: garrafaToUpdate?.titulo ?? "",
@@ -42,7 +43,6 @@ function AdicionarEditarGarrafa({
   });
 
   const handleSend = async () => {
-    const response = await serviceCall[mode]();
 
     const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("\\").pop();
 
@@ -58,8 +58,11 @@ function AdicionarEditarGarrafa({
     const serviceCall = {
       [ActionMode.NORMAL]: () => AdegaService.create(garrafa),
       [ActionMode.ATUALIZAR]: () =>
-        AdegaService.updtateById(garrafaToUpdate?.id, garrafa),
+        AdegaService.update(garrafaToUpdate?._id, garrafa),
     };
+    console.log(mode)
+    const response = await serviceCall[mode]();
+
     const actionResponse = {
       [ActionMode.NORMAL]: () => onCreateGararafa(response),
       [ActionMode.ATUALIZAR]: () => onUpdateGarrafa(response),

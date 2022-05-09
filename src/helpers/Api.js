@@ -7,9 +7,15 @@ const AdegaContext = {
     updateGarrafaById: (id) => `${AdegaContext.garrafaEndpoint()}/update-garrafa/${id}`,
     deleteGarrafaById: (id) => `${AdegaContext.garrafaEndpoint()}/delete-garrafa/${id}`,
   };
+  const SacolaContext = {
+    getSacola: () => `${AdegaContext.paletaEndpoint()}/all-carrinho`,
+    createSacola: () => `${AdegaContext.paletaEndpoint()}/create-carrinho`,
+    purchase: () => `${AdegaContext.paletaEndpoint()}/finish-carrinho`,
+  }
 
   export const Api = {
     baseUrl: "http://localhost:3333",
     ...AdegaContext,
+    ...SacolaContext,
   };
   

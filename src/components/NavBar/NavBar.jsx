@@ -1,7 +1,7 @@
 import "./NavBar.css";
 import { ActionMode } from "constants/index.js";
 
-function NavBar({ createGarrafa, updateGarrafa, mode, deletaGarrafa }) {
+function NavBar({ createGarrafa, updateGarrafa, mode, deletaGarrafa, openBag }) {
   return (
     <div className="Header">
       <div className="row">
@@ -47,18 +47,19 @@ function NavBar({ createGarrafa, updateGarrafa, mode, deletaGarrafa }) {
             type="button"
             className={`Opcoes__garrafa Garrafa ${
               mode === ActionMode.DELETAR && "Garrafa-deletar"
-            }`}
+            } `}
             onClick={() => deletaGarrafa()}
           >
             <img
               src="../assets/images/Delete.png"
               width="40px"
               className="Garrafa_icone"
-              alt="Deletar Garrafa"
+              alt="Deletar garrafa"
             />
           </button>
+          
 
-          <div className="Opcoes__sacola Sacola">
+          <div className="Opcoes__sacola Sacola" onClick={openBag}>
             <img
               src="../assets/images/sacola.svg"
               width="40px"

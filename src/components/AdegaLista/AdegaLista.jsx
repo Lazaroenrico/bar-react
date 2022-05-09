@@ -5,9 +5,18 @@ import AdegaListaItem from "components/AdegaListaItem/AdegaListaItem.jsx";
 import AdegaDetalhesModal from "../AdegaDetalheModal/AdegaDetalheModal";
 import { ActionMode } from "constants/index";
 
-function AdegaLista({ garrafaCriada, mode, updateGarrafa, deletaGarrafa, garrafaEditada }) {
+function AdegaLista({
+  garrafaCriada,
+  mode,
+  updateGarrafa,
+  deletaGarrafa,
+  garrafaEditada,
+  garrafaRemovida,
+}) {
+  const selecionadas = JSON.parse(localStorage.getItem("selecionadas")) ?? {};
+
   const [garrafas, setGarrafas] = useState([]);
-  const [garrafaSelecionada, setGarrafaSelecionada] = useState({});
+  const [garrafaSelecionada, setGarrafaSelecionada] = useState(selecionadas);
   const [adegaModal, setAdegaModal] = useState(false);
 
   /* ---------------------  Adicionar e Remover ----------------*/
@@ -16,6 +25,8 @@ function AdegaLista({ garrafaCriada, mode, updateGarrafa, deletaGarrafa, garrafa
     const garrafa = {
       [garrafaIndex]: Number(garrafaSelecionada[garrafaIndex] || 0) + 1,
     };
+    
+
     setGarrafaSelecionada({ ...garrafaSelecionada, ...garrafa });
   };
   const removerItem = (garrafaIndex) => {
@@ -51,6 +62,7 @@ function AdegaLista({ garrafaCriada, mode, updateGarrafa, deletaGarrafa, garrafa
     [garrafas]
   );
 
+
   useEffect(() => {
     if (
       garrafaCriada &&
@@ -62,7 +74,7 @@ function AdegaLista({ garrafaCriada, mode, updateGarrafa, deletaGarrafa, garrafa
 
   useEffect(() => {
     getLista();
-  }, [garrafaEditada]);
+  }, [garrafaEditada, garrafaRemovida]);
 
   return (
     <div className="AdegaLista">
