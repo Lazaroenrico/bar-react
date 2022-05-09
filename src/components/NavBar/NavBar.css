@@ -2,6 +2,7 @@
   max-width: 1110px;
   margin: 0 auto 25px auto;
   position: relative;
+
 }
 
 .row {
@@ -66,6 +67,17 @@
 .Garrafa {
   background: none;
   border: none;
+  border-radius: 10px;
+  transition: all .5s;
+  padding: 0;
+
+}
+.Ativo-Update{
+background-color: aquamarine;
+}
+
+.Paleta--deletar {
+  background: rgba(211, 0, 0);
 }
 
 .Garrafa_icone {
@@ -94,6 +106,9 @@
   }
 
   .Logo__titulo {
-    font-size: 1.5em;
+    font-size: 1.1em;
+    left: 42px;
+
   }
+
 }

@@ -11,14 +11,19 @@ export const AdegaService = {
 
   create: (garrafa) =>
     fetch(Api.createGarrafa(), { method: "POST" }, {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(garrafa),
         mode: "cors",
         headers: { "Content-Type": "application/json" },
       }).then(parseResponse),
 
-  update: (id) =>
-    fetch(Api.updateGarrafaById(id)).then(parseResponse),
+  update: (id,garrafa) =>
+    fetch(Api.updateGarrafaById(id), { method: "PUT" }, {
+      method: "PUT",
+      body: JSON.stringify(garrafa),
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+    }).then(parseResponse),
 
   delete: (id) =>
     fetch(Api.deleteGarrafaById(id), { method: "DELETE" }).then(parseResponse),

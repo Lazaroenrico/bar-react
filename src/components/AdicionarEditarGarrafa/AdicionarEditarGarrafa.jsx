@@ -1,34 +1,22 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
-import "components/AdicionarGarrafa/AdicionarGarrafa.css";
+import "components/AdicionarEditarGarrafa/AdicionarEditarGarrafa.css";
 import { AdegaService } from "services/AdegaService.js";
+import { ActionMode } from "constants/index";
 
-function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
+function AdicionarEditarGarrafa({
+  closeModal,
+  onCreateGararafa,
+  mode,
+  garrafaToUpdate,
+  onUpdateGarrafa,
+}) {
   const form = {
-    preco: "",
-    titulo: "",
-    tipo: "",
-    descricao: "",
-    foto: "",
-  };
-
-  const createGarrafa = async () => {
-
-    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("\\").pop();
-
-    const { titulo, tipo, descricao, preco, foto } = state;
-
-    const garrafa = {
-      titulo,
-      tipo,
-      descricao,
-      preco,
-      foto: `assets/images/${renomeiaCaminhoFoto(foto)}`,
-    };
-    const response = await AdegaService.create(garrafa);
-
-    onCreateGararafa(response);
-
+    preco: garrafaToUpdate?.preco ?? "",
+    titulo: garrafaToUpdate?.titulo ?? "",
+    tipo: garrafaToUpdate?.tipo ?? "",
+    descricao: garrafaToUpdate?.descricao ?? "",
+    foto: garrafaToUpdate?.foto ?? "",
   };
 
   const [state, setState] = useState(form);
@@ -40,7 +28,7 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
         state.foto.length &&
         state.titulo.length &&
         state.tipo.length &&
-        state.preco.length
+        String(state.preco).length
     );
     setCanDesable(response);
   };
@@ -53,6 +41,45 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
     canDisableSendButton();
   });
 
+  const handleSend = async () => {
+    const response = await serviceCall[mode]();
+
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("\\").pop();
+
+    const { titulo, tipo, descricao, preco, foto } = state;
+
+    const garrafa = {
+      titulo,
+      tipo,
+      descricao,
+      preco,
+      foto: `assets/images/${renomeiaCaminhoFoto(foto)}`,
+    };
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => AdegaService.create(garrafa),
+      [ActionMode.ATUALIZAR]: () =>
+        AdegaService.updtateById(garrafaToUpdate?.id, garrafa),
+    };
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreateGararafa(response),
+      [ActionMode.ATUALIZAR]: () => onUpdateGarrafa(response),
+    };
+
+
+    actionResponse[mode]();
+
+    const reset = {
+      preco: "",
+      sabor: "",
+      recheio: "",
+      descricao: "",
+      foto: "",
+    };
+
+    setState(reset);
+    closeModal();
+  };
+
   return (
     <Modal closeModal={closeModal}>
       <div className="AdicionarGarrafa">
@@ -60,37 +87,43 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
           <h2>Adicionar ao Cardápio</h2>
           <div>
             <label className="AdicionaGarrafaModal_text" htmlFor="preco">
-              Preco:
+              {" "}
+              Preco:{" "}
             </label>
             <input
               type="text"
               id="preco"
               placeholder="149,90"
               value={state.preco}
+              required
               onChange={(e) => handleChange(e, "preco")}
             />
           </div>
           <div>
             <label className="AdicionaGarrafaModal_text" htmlFor="titulo">
-              Titulo:
+              {" "}
+              Titulo:{" "}
             </label>
             <input
               type="text"
               id="titulo"
               placeholder="Jack Daniel's"
               value={state.titulo}
+              required
               onChange={(e) => handleChange(e, "titulo")}
             />
           </div>
           <div>
             <label className="AdicionaGarrafaModal_text" htmlFor="tipo">
-              Tipo:
+              {" "}
+              Tipo:{" "}
             </label>
             <input
               type="text"
               id="tipo"
               placeholder="Whisky Jack"
               value={state.tipo}
+              required
               onChange={(e) => handleChange(e, "tipo")}
             />
           </div>
@@ -105,9 +138,24 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
               className="AdicionarGarrafa_foto"
               type="file"
               id="foto"
-              accept="images/png, images/gif, images/jpeg"
+              accept="image/png, image/gif, image/jpeg"
               value={state.foto}
+              required
               onChange={(e) => handleChange(e, "foto")}
+            />
+          </div>
+          <div>
+            <label className="AdicionaGarrafaModal_text" htmlFor="descricao">
+              {" "}
+              Descrição:{" "}
+            </label>
+            <input
+              type="text"
+              id="descricao"
+              placeholder="Coloque uma descrição"
+              value={state.descricao}
+              required
+              onChange={(e) => handleChange(e, "descricao")}
             />
           </div>
 
@@ -115,8 +163,9 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
             className="AdicionaGarrafa_enviar"
             type="button"
             disabled={canDisable}
-            onClick={createGarrafa}
+            onClick={handleSend}
           >
+            {ActionMode.NORMAL === mode ? "Enviar" : "Atualizar"}
             Enviar
           </button>
         </form>
@@ -125,4 +174,4 @@ function AdicionarGarrafa({ closeModal, onCreateGararafa }) {
   );
 }
 
-export default AdicionarGarrafa;
+export default AdicionarEditarGarrafa;
