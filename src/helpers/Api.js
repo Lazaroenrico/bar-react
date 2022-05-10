@@ -14,7 +14,7 @@ const AdegaContext = {
   }
 
   export const Api = {
-    baseUrl: "http://localhost:3333",
+    baseUrl: "https://api-adega-w7xo.onrender.com",
     ...AdegaContext,
     ...SacolaContext,
   };
