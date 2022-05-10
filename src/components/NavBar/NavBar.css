@@ -73,10 +73,10 @@
 
 }
 .Ativo-Update{
-background-color: aquamarine;
+background-color: gray;
 }
 
-.Paleta--deletar {
+.Garrafa-deletar {
   background: rgba(211, 0, 0);
 }
 
@@ -106,7 +106,7 @@ background-color: aquamarine;
   }
 
   .Logo__titulo {
-    font-size: 1.1em;
+    font-size: 1em;
     left: 42px;
 
   }

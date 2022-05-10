@@ -8,7 +8,7 @@ function DeletaGarrafaModal({
   onDeleteGarrafa,
 }) {
   const handleDelete = async (garrafa) => {
-    await AdegaService.deleteById(garrafa._id);
+    await AdegaService.delete(garrafa._id);
     onDeleteGarrafa(garrafa);
     closeModal();
   };

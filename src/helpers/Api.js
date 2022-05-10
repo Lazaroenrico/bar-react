@@ -8,9 +8,9 @@ const AdegaContext = {
     deleteGarrafaById: (id) => `${AdegaContext.garrafaEndpoint()}/delete-garrafa/${id}`,
   };
   const SacolaContext = {
-    getSacola: () => `${AdegaContext.paletaEndpoint()}/all-carrinho`,
-    createSacola: () => `${AdegaContext.paletaEndpoint()}/create-carrinho`,
-    purchase: () => `${AdegaContext.paletaEndpoint()}/finish-carrinho`,
+    getSacola: () => `${AdegaContext.garrafaEndpoint()}/all-carrinho`,
+    createSacola: () => `${AdegaContext.garrafaEndpoint()}/create-carrinho`,
+    purchase: () => `${AdegaContext.garrafaEndpoint()}/finish-carrinho`,
   }
 
   export const Api = {

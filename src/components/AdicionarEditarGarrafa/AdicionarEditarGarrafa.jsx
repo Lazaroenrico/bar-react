@@ -11,7 +11,7 @@ function AdicionarEditarGarrafa({
   garrafaToUpdate,
   onUpdateGarrafa,
 }) {
-  console.log(mode  )
+  console.log(mode)
   const form = {
     preco: garrafaToUpdate?.preco ?? "",
     titulo: garrafaToUpdate?.titulo ?? "",
@@ -26,10 +26,10 @@ function AdicionarEditarGarrafa({
   const canDisableSendButton = () => {
     const response = !Boolean(
       state.descricao.length &&
-        state.foto.length &&
-        state.titulo.length &&
-        state.tipo.length &&
-        String(state.preco).length
+      state.foto.length &&
+      state.titulo.length &&
+      state.tipo.length &&
+      String(state.preco).length
     );
     setCanDesable(response);
   };
@@ -37,6 +37,7 @@ function AdicionarEditarGarrafa({
   const handleChange = (e, name) => {
     setState({ ...state, [name]: e.target.value });
   };
+  console.log(state)
 
   useEffect(() => {
     canDisableSendButton();
@@ -44,16 +45,17 @@ function AdicionarEditarGarrafa({
 
   const handleSend = async () => {
 
-    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split("\\").pop();
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split('/\|//').pop();
 
     const { titulo, tipo, descricao, preco, foto } = state;
 
     const garrafa = {
+      ...(garrafaToUpdate && { _id: garrafaToUpdate?._id }),
       titulo,
       tipo,
       descricao,
       preco,
-      foto: `assets/images/${renomeiaCaminhoFoto(foto)}`,
+      foto: `${renomeiaCaminhoFoto(foto)}`,
     };
     const serviceCall = {
       [ActionMode.NORMAL]: () => AdegaService.create(garrafa),
@@ -85,7 +87,7 @@ function AdicionarEditarGarrafa({
 
   return (
     <Modal closeModal={closeModal}>
-      <div className="AdicionarGarrafa">
+      <div className="AdicionaGarrafaModal ">
         <form autoComplete="off">
           <h2>Adicionar ao Cardápio</h2>
           <div>
@@ -131,23 +133,6 @@ function AdicionarEditarGarrafa({
             />
           </div>
           <div>
-            <label
-              className="AdicionaGarrafaModal_text AdicionaGarrafa_foto-label"
-              htmlFor="foto"
-            >
-              {!state.foto.length ? "Selecionar Imagem" : state.foto}
-            </label>
-            <input
-              className="AdicionarGarrafa_foto"
-              type="file"
-              id="foto"
-              accept="image/png, image/gif, image/jpeg"
-              value={state.foto}
-              required
-              onChange={(e) => handleChange(e, "foto")}
-            />
-          </div>
-          <div>
             <label className="AdicionaGarrafaModal_text" htmlFor="descricao">
               {" "}
               Descrição:{" "}
@@ -161,6 +146,22 @@ function AdicionarEditarGarrafa({
               onChange={(e) => handleChange(e, "descricao")}
             />
           </div>
+          <div>
+            <label
+              className="AdicionaGarrafaModal_text AdicionaGarrafa_foto-label"
+              htmlFor="foto"
+            >
+              {!state.foto.length ? "Selecionar Imagem" : state.foto}
+            </label>
+            <input
+              className="AdicionarGarrafa_foto"
+              type="file"
+              id="foto"
+              accept="image/png, image/gif, image/jpeg"
+              required
+              onChange={(e) => handleChange(e, "foto")}
+            />
+          </div>
 
           <button
             className="AdicionaGarrafa_enviar"
@@ -169,7 +170,6 @@ function AdicionarEditarGarrafa({
             onClick={handleSend}
           >
             {ActionMode.NORMAL === mode ? "Enviar" : "Atualizar"}
-            Enviar
           </button>
         </form>
       </div>

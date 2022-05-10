@@ -10,15 +10,15 @@ export const AdegaService = {
     fetch(Api.garrafaById(id), { method: "GET" }).then(parseResponse),
 
   create: (garrafa) =>
-    fetch(Api.createGarrafa(), { method: "POST" }, {
-        method: "POST",
-        body: JSON.stringify(garrafa),
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-      }).then(parseResponse),
+    fetch(Api.createGarrafa(garrafa), {
+      method: "POST",
+      body: JSON.stringify(garrafa),
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+    }).then(parseResponse),
 
-  update: (id,garrafa) =>
-    fetch(Api.updateGarrafaById(id), { method: "PUT" }, {
+  update: (id, garrafa) =>
+    fetch(Api.updateGarrafaById(id), {
       method: "PUT",
       body: JSON.stringify(garrafa),
       mode: "cors",

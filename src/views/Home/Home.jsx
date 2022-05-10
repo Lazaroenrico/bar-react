@@ -1,7 +1,7 @@
 import "./Home.css";
 import AdegaLista from "../../components/AdegaLista/AdegaLista";
 import NavBar from "components/NavBar/NavBar";
-import AdicionarEdiatarGarrafa from "components/AdicionarEditarGarrafa/AdicionarEditarGarrafa";
+import AdicionarEditarGarrafa from "components/AdicionarEditarGarrafa/AdicionarEditarGarrafa";
 import { useState } from "react";
 import { ActionMode } from "constants/index.js";
 import DeletaGarrafaModal from "components/DeletaGarrafaModal/DeletaGarrafaModal";
@@ -71,8 +71,9 @@ function Home() {
           updateGarrafa={handleUpdateGarrafa}
         />
         {canShowAdicionaGarrrafaModal && (
-          <AdicionarEdiatarGarrafa
+          <AdicionarEditarGarrafa
             onUpdateGarrafa={(garrafa) => setGarrafaEditada(garrafa)}
+            garrafaToUpdate={garrafaParaEditar}
             closeModal={handleCloseModal}
             onCreateGararafa={(garrafa) => setGarrafaParaAdicionar(garrafa)}
             mode={modoAtual}
